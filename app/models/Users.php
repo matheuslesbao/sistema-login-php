@@ -49,9 +49,9 @@ class Users
         return (new Database('Users'))->select('id = '.$id)
                                       ->fetchObject(self::class);
       }
-      public static function getEmail($where = null, $order = null, $limit = 1){
-        return (new Database('Users'))->select($where,$order,$limit)
-                                      ->fetchAll(PDO::FETCH_CLASS,self::class);
+      public static function getEmail(string $email){
+        return (new Database('Users'))->whereEmail($email)
+                                      ->fetchObject(self::class);
       }
  
 }
